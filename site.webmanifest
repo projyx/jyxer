@@ -1,0 +1,9 @@
+{
+    "name": "Jyxer",
+    "routes": [
+        {
+            "file": "home.html",
+            "url": "/"
+        }
+    ]
+}

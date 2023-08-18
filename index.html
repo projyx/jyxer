@@ -3,174 +3,22 @@
         <title>Jyxer</title>
         <meta name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0'>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.js'></script>
-        <link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.16.0/codemirror.css' rel='stylesheet'>
-        <link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/theme/abcdef.min.css' rel='stylesheet'>
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/rest.js/15.0.2/octokit-rest.min.js" integrity="sha512-Sr9H+XjDgAtZDtuPsMTJ5iWtXksOZlx6XmF2tpZi7iSr3IWqQsGj86l7lZZwpXHEpXmvv05luwfiOUO0wYYpWA==" crossorigin="anonymous"></script>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/addon/fold/foldcode.js" integrity="sha512-VW3/y44dtyFYaOikJ1zSwM1o+/ErlidCA7PN3jPYEyHR5RNvP+NvWqOxrqf9/k0Y5yFLtdurypKFwm+jE8lgkA==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/addon/fold/foldgutter.min.js" integrity="sha512-Yhrn0zU9jQBETdu3RUw6Rl+pSPWNl8xDxjiJkds2xNQapiaCiBX0et1ecl8VqUM421uWRwoa0ynzZ5knY8zt9w==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/addon/fold/indent-fold.min.js" integrity="sha512-Q6g5qQfa6ko+Y+0BwAciUAq01qxgfScTPFP2Fsrr+zIrTe5Yq3tN5xaA919MmBs/1RMz/jyctknYavjc3k+/xg==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/mode/css/css.min.js" integrity="sha512-rsFXL+3jYau54xgkx2FtVPo+yRM4vLMEU9VBWl8hZX+t8MEYzGBHeHh5ELv04uthHqix7Dhw2o4KgQ1c+s6dEQ==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/mode/javascript/javascript.min.js" integrity="sha512-+tn2IYnLwD2J9p6Nrn/Dl7ag9lluHA0GAblT/vnMiJV8DU/iDsldgf+9XbEqZUee2ThyDtfmSDb+IDZ9u7jrSA==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/mode/htmlmixed/htmlmixed.min.js" integrity="sha512-IC+qg9ITjo2CLFOTQcO6fBbvisTeJmiT5D5FnXsCptqY8t7/UxWhOorn2X+GHkoD1FNkyfnMJujt5PcB7qutyA==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/mode/xml/xml.min.js" integrity="sha512-XPih7uxiYsO+igRn/NA2A56REKF3igCp5t0W1yYhddwHsk70rN1bbbMzYkxrvjQ6uk+W3m+qExHIJlFzE6m5eg==" crossorigin="anonymous"></script>
-        <style id="css"></style>
-        <link href='/assets/css/boiler.css'></link>
-        <link href='/assets/css/theme.css'></link>
-        <link href='/assets/css/modal.css'></link>
-        <link href="https://cdn.jsdelivr.net/npm/css.gg/icons/all.css">
-        <script src='/assets/js/vanilla.js'></script>
-        <script src='/assets/js/router.js'></script>
-        <script src='/assets/js/on.js'></script>
-        <script src='/assets/js/modal.js'></script>
-        <script src='/assets/js/firebase.app.js'></script>
-        <script src='/assets/js/firebase.auth.js'></script>
-        <script src='/assets/js/auth.js'></script>
         <link href="/index.css" rel="stylesheet">
+        <link href="/assets/css/home.css" rel="stylesheet">
+        <link href="/assets/css/theme.css" rel="stylesheet">
         <script src="/index.js"></script>
+        <script src="/assets/js/api.js"></script>
+        <script src="/assets/js/browse.js"></script>
+        <script src="/assets/js/events.js"></script>
+        <script src="/assets/js/export.js"></script>
+        <script src="/assets/js/routes.js"></script>
     </head>
-    <body class="body" id="body">
-        <boot id="boot">
-            <div class="bouncing bounce1 bg-r"></div>
-            <div class="bouncing bounce2 bg-g"></div>
-            <div class="bouncing bounce3 bg-b"></div>
-        </boot>
-        <main class="main" id="main">
-            <page data-page="/" id="page-index">
-                <blocks class="direction-row isauth">
-                    <block></block>
-                    <block id="repos"></block>
-                </blocks>
-                <div class="noauth">
-                    <div></div>
-                </div>
-            </page>
-            <pages data-pages="/files/" id="page-files">
-                <blocks class="direction-row">
-                    <block></block>
-                    <block id="repos"></block>
-                </blocks>
-            </pages>
-            <pages data-pages="/editor/" id="pages-editor">
-                <header class="bg-header border-bottom-1px-solid border-color-bbb fg-white top-0 width-100vw z-index-5">
-                    <section>
-                        <card class="margin-x-auto max-width-100pc">
-                            <section>
-                                <box data-href="/">
-                                    <section>
-                                        <ico>
-                                            <n class="gg-code-slash"></n>
-                                        </ico>
-                                    </section>
-                                </box>
-                                <box data-href="/search/">
-                                    <span class="info">
-                                        <div class="bolder project-name" placeholder="Untitled" value="Chree Δ Banon"></div>
-                                        <div class="font-size-14px project-user" placeholder="Anonymous"></div>
-                                    </span>
-                                </box>
-                                <box class="margin-left" data-href="/search/">
-                                    <section>
-                                        <ico>
-                                            <n class="gg-software-upload"></n>
-                                        </ico>
-                                    </section>
-                                </box>
-                                <box data-href="/users/">
-                                    <section>
-                                        <ico>
-                                            <n class="gg-eye"></n>
-                                        </ico>
-                                    </section>
-                                </box>
-                                <box class="align-center cell flex justify-center" data-tap="controller.users.profile()" data-z-index="6" id="avi-mobile">
-                                    <picture class="absolute absolute-full hide isauth">
-                                        <img class="absolute absolute-full border-radius-50pc cell-40px fit-contain height-100pc-10px margin-5px spin-30s width-100pc-10px" data-src="https://cdn.endk.it/png/rainring.png">
-                                    </picture>
-                                    <section>
-                                        <picture class="bg-black border-radius-50pc empty margin-10px" data-height="30px" data-width="30px"></picture>
-                                        <picture class="bg-black border-radius-50pc empty-state isauth margin-10px" data-height="30px" data-width="30px">
-                                            <img class="absolute bottom-0 height-75pc invert fit-contain width-75pc" src="https://share.uios.computer/cdn/svg/user.svg">
-                                        </picture>
-                                        <picture class="bg-black border-radius-50pc margin-10px noauth" data-height="30px" data-width="30px">
-                                            <img class="absolute bottom-0 height-75pc invert fit-contain width-75pc" src="https://code.uios.computer/cdn/svg/github.svg">
-                                        </picture>
-                                    </section>
-                                </box>
-                            </section>
-                        </card>
-                </header>
-                <blocks class="absolute-full direction-row height-100pc--50px layout-side layout-left">
-                    <aside class="code" id="code">
-                        <section class="editor">
-                            <div class="editor-resizer"></div>
-                            <div class="editor-div editor-html" id="editor-html">
-                                <header class="editor-header">
-                                    <div>HTML</div>
-                                    <div class="more"></div>
-                                </header>
-                                <section class="editor-section">
-                                    <div class="section-div" id="html-editor"></div>
-                                </section>
-                            </div>
-                            <div class="editor-resizer"></div>
-                            <div class="editor-div editor-css" id="editor-css">
-                                <header class="editor-header">
-                                    <div>CSS</div>
-                                    <div class="more"></div>
-                                </header>
-                                <section class="editor-section">
-                                    <div class="section-div" id="css-editor"></div>
-                                </section>
-                            </div>
-                            <div class="editor-resizer"></div>
-                            <div class="editor-div editor-js" id="editor-js">
-                                <header class="editor-header">
-                                    <div>JS</div>
-                                    <div class="more"></div>
-                                </header>
-                                <section class="editor-section">
-                                    <div class="section-div" id="js-editor"></div>
-                                </section>
-                            </div>
-                        </section>
-                    </aside>
-                    <div class="height-100pc width-14px" id="resizer"></div>
-                    <div class="preview">
-                        <iframe class="preview-code" id="preview-code"></iframe>
-                    </div>
-                </blocks>
-            </pages>
+    <body>
+        <!--<header></header>-->
+        <main>
+            <section>
+                <section class="component component-home" route="/"></section>
+            </section>
         </main>
-        <template id="template-editor-nav">
-            <nav class="bg-white border-radius-5px fg-lightgray max-width-100pc mobile-padding-x-0 right-10px scroll-y shadow top-50px width-240px" data-position="fixed">
-                <section class="width-100pc">
-                    <card class="bolder line-height-30px padding-y-10px">
-                        <column>
-                            <box class="padding-x-10px">
-                                <section>
-                                    <text>Profile</text>
-                                </section>
-                            </box>
-                            <box class="padding-x-10px">
-                                <section>
-                                    <text>Create</text>
-                                </section>
-                            </box>
-                            <box class="padding-x-10px">
-                                <section>
-                                    <text>Settings</text>
-                                </section>
-                            </box>
-                            <box class="padding-x-10px" data-tap="controller.users.logout(event.target)">
-                                <section>
-                                    <text>Log Out</text>
-                                </section>
-                            </box>
-                        </column>
-                    </card>
-                </section>
-            </nav>
-        </template>
     </body>
 </html>

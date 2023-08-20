@@ -14,7 +14,7 @@
         height: 100%;
         margin: auto;
         max-width: calc(100% - 20px);
-        width: 320px;
+        width: 640px;
     }
 
     .component-home .article-ring > section {
@@ -35,10 +35,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
-        height: 320px;
-        margin: 70px 0 10px;
+        height: 0;
+        margin: 10px 0 10px;
+        padding-top: 100%;
         position: relative;
-        width: 320px;
+        width: 100%;
         /* background-image: url('/assets/jpg/perfect-circles.jpg'); */
         background-position: center;
         background-size: cover;

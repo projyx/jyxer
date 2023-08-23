@@ -7,6 +7,22 @@
         margin: 0;
     }
 
+    @media {
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    }
+
     body > header {
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -17,23 +33,59 @@
         width: 100%;
     }
 
-    body > main {
-        /* padding: 20px; */
+    form {
+        margin: 0;
+    }
+
+    article, div, picture {
+        /* display: flex; */
+    }
+
+    column, flex, row {
+        display: flex;
+    }
+
+    span {
+        /* display: inline-flex; */
+    }
+
+    iframe {
+        background: white;
+        border: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    input[type="text"] {
+        background-color: transparent;
+        bordeR: none;
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+    }
+
+    picture {
+        position: relative;
     }
 }
 
 @media {
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
+    [placeholder]:not(input):before {
+        content: attr(placeholder);
+        opacity: 0.5;
+    }
+}
 
-        50% {
-            background-position: 100% 50%;
-        }
+@media {
+    .component {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100%;
+    }
 
-        100% {
-            background-position: 0% 50%;
-        }
+    .component:not(.active) {
+        display: none;
     }
 }

@@ -45,7 +45,7 @@
         background-size: cover;
     }
 
-    .component-home .article-ring .ring-spectrum span {
+    .component-home .article-ring .ring-spectrum box {
         border-radius: 50%;
         display: flex;
         height: 0;
@@ -62,8 +62,14 @@
         right: 0;
         position: absolute;
         top: 0;
+        scale: calc(2/3);
+        transition: 1s scale;
         transform-origin: center;
         /* display: none; */
+    }
+    
+    .component-home .article-ring .ring-spectrum .ring:hover {
+        scale: 1;
     }
 
     .component-home .article-ring .ring-spectrum .ring-white {
@@ -105,7 +111,7 @@
         translate: 0 -121%;
     }
 
-    .component-home .article-ring .ring-spectrum span > section {
+    .component-home .article-ring .ring-spectrum box > section {
         border-radius: 50%;
         display: flex;
         height: 100%;
@@ -114,7 +120,7 @@
         width: 100%;
     }
 
-    .component-home .article-ring .ring-spectrum span.ring-white > section {
+    .component-home .article-ring .ring-spectrum box.ring-white > section {
         border: 2px solid white;
         box-sizing: border-box;
     }

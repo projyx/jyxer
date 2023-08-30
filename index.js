@@ -4,5 +4,5 @@ window.onload = async(event)=>{
         manifest: window.manifest
     });
 
-    browse.route(window.location.pathname);
+    //browse.route(window.location.pathname);
 }

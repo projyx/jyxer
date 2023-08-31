@@ -75,6 +75,7 @@ browse.route = (href,params)=>{
                     return true
                 }
             })
+            console.log(78, loop);
             link = '/' + loop.join('/');
         }
 

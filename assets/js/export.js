@@ -14,9 +14,11 @@ function get(resource, options) {
             }
             return response.text();
         }
-        ).then(response=>{
+        ).then(body=>{
             try {
-                response = JSON.parse(response);
+                const response = new Response(JSON.parse(response), {
+                    status: 200
+                });
                 resolve(response);
             } catch (err) {
                 resolve(response);

@@ -15,7 +15,7 @@ browse.route = (href,params)=>{
         });
 
         //TRANSFORM URL
-        var link = pathname;
+        var link = "/" + paths.join('/');
         if (paths.length > 0) {
             var r = [];
             paths.forEach((path,index)=>schema(path, index));

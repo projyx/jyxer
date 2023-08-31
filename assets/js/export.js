@@ -15,14 +15,23 @@ function get(resource, options) {
             return response.text();
         }
         ).then(body=>{
+            console.log(body);
             try {
-                const response = new Response(JSON.parse(response), {
+                var json = JSON.parse(body);
+                var options = {
                     status: 200
-                });
-                resolve(response);
+                };
+                console.log(123, json, options);
             } catch (err) {
-                resolve(response);
+                var json = body;
+                var options = {
+                    status: 200
+                };
+                console.log(321, json, options);
+                //resolve(body);
             }
+            const response = new Response(json,options);
+            resolve(json);
         }
         ).catch(error=>{
             console.log("function_get 404 ERROR", error);

@@ -8,6 +8,7 @@ browse.route = (href,params)=>{
         var pathname = url.pathname;
         var search = url.search ? url.search : null;
         var paths = pathname.split("/").splice(1).filter(n=>n);
+        location.protocol === "blob:" ? paths.shift() : null;
         console.log('protocol', {
             protocol: location.protocol
         });

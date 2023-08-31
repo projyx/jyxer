@@ -8,6 +8,9 @@ browse.route = (href,params)=>{
         var pathname = url.pathname;
         var search = url.search ? url.search : null;
         var paths = pathname.split("/").splice(1).filter(n=>n);
+        console.log('protocol', {
+            protocol: location.protocol
+        });
 
         //TRANSFORM URL
         var link = pathname;

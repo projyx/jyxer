@@ -101,7 +101,7 @@ browse.route = (href,params)=>{
             params
         });
         document.querySelectorAll('.component').forEach(c=>c.classList.remove('active'));
-        var html = await get('/assets/html/' + route.file);
+        var html = await request('/assets/html/' + route.file);
         component.innerHTML.length === 0 ? component.innerHTML = html : null;
         var obj = await window.routes(uri, options);
 

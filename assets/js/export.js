@@ -1,6 +1,7 @@
 function get(resource, options) {
     return new Promise(async function(resolve, reject) {
         await fetch(resource, options).then(async(response)=>{
+            console.log(4, response);
             if (!response.ok) {
                 return response.text().then(text=>{
                     var text = JSON.stringify({

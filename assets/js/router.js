@@ -10,6 +10,7 @@ browse.route = (href,params)=>{
         var paths = pathname.split("/").splice(1).filter(n=>n);
         location.protocol === "blob:" ? paths.shift() : null;
         console.log('protocol', {
+            paths,
             protocol: location.protocol
         });
 

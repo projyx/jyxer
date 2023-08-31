@@ -15,7 +15,6 @@ function request(resource, options) {
             return response.text();
         }
         ).then(function(body) {
-            console.log(body);
             try {
                 var json = JSON.parse(body);
                 var options = {
@@ -29,13 +28,12 @@ function request(resource, options) {
                     status: 200,
                     statusText: "OK"
                 };
-                console.log(321, json, options);
+                //console.log(321, json, options);
                 //resolve(body);
             }
             const response = new Response(new String(body),options);
             return response
         }).then(function(response) {
-            console.log(4, response);
             if (!response.ok) {
                 return response.text().then(text=>{
                     var text = JSON.stringify({
@@ -48,7 +46,6 @@ function request(resource, options) {
             }
             return response.text();
         }).then(function(body) {
-            console.log(body);
             try {
                 var json = JSON.parse(body);
                 var options = {
@@ -60,7 +57,6 @@ function request(resource, options) {
                 var options = {
                     status: 200
                 };
-                console.log(321, json, options);
                 //resolve(body);
             }
             const response = new Response(json,options);

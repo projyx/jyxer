@@ -122,11 +122,13 @@ browse.route = (href,params)=>{
         const state = {
             url: uri
         }
-        if (!(pop) && !["blob:"].includes(window.location.protocol)) {
-            console.log(121, obj);
-            history.pushState(state, null, uri)
-        } else {
-            history.replaceState(state, null, uri);
+        if (!["blob:"].includes(window.location.protocol)) {
+            if (!(pop)) {
+                console.log(121, obj);
+                history.pushState(state, null, uri)
+            } else {
+                history.replaceState(state, null, uri);
+            }
         }
         resolve(obj);
     }

@@ -38,6 +38,9 @@ browse.route = (href,params)=>{
         var loop = null;
         var dynamic = pathname;
         var matched = pathname;
+        console.log('matches', {
+            paths
+        });
         if (paths.length > 0) {
             var route = window.manifest.routes.every(function(route, index) {
                 if (route.url !== "/") {

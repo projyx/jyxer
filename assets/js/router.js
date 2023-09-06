@@ -5,10 +5,10 @@ browse.route = (href,params)=>{
     async function browser(resolve, reject) {
         //URL VARIABLES
         var url = new URL(href,location.origin);
-        var pathname = url.pathname;
         var search = url.search ? url.search : null;
-        var paths = pathname.split("/").splice(1).filter(n=>n);
+        var paths = url.pathname.split("/").splice(1).filter(n=>n);
         location.protocol === "blob:" ? paths.shift() : null;
+        var pathname = "/" + paths.join("/");
         console.log('protocol', {
             paths,
             protocol: location.protocol

@@ -122,7 +122,7 @@ browse.route = (href,params)=>{
         const state = {
             url: uri
         }
-        if (!(pop)) {
+        if (!(pop) && !["blob:"].includes(window.location.protocol)) {
             console.log(121, obj);
             history.pushState(state, null, uri)
         } else {

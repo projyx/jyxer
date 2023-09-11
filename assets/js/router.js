@@ -124,7 +124,7 @@ browse.route = (href,params)=>{
         }
         if (!["blob:"].includes(window.location.protocol)) {
             if (!(pop)) {
-                console.log(121, obj);
+                //console.log(121, obj);
                 history.pushState(state, null, uri)
             } else {
                 history.replaceState(state, null, uri);

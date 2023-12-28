@@ -1,10 +1,16 @@
 @media {
     body {
-        background: linear-gradient(-45deg, rgba(35,166,213,1) 25%, rgba(50,205,50,1) 50%, rgba(255,59,48,1) 75%);
+        /* background: linear-gradient(-45deg, rgba(35,166,213,1) 25%, rgba(50,205,50,1) 50%, rgba(255,59,48,1) 75%); */
         background-size: 400% 400%;
         animation: gradient 15s infinite ease;
         -webkit-animation: gradient 15s infinite ease;
         margin: 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: black;
+        }        
     }
 
     @media {

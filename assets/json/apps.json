@@ -1,20 +1,9 @@
 [
-    [
-        "code",
-        "games",
-        "photo",
-        "words",
-        "audio",
-        "video",
-        "space"
-    ],
-    [
-        "space",
-        "code",
-        "words",
-        "audio",
-        "photo",
-        "video",
-        "games"
-    ]
+    "space",
+    "code",
+    "words",
+    "audio",
+    "photo",
+    "video",
+    "games"
 ]

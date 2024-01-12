@@ -100,7 +100,7 @@
     }
 
     .component-home .article-ring .ring-spectrum #coin {
-        background: white;
+        background: black;
         border: 5px solid #878787;
         border-radius: 50%;
         position: absolute;

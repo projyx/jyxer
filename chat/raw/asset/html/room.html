@@ -1,0 +1,106 @@
+<header class="header-room">
+    <section>
+        <div>
+            <section>
+                <span>
+                    <i href="/">
+                        <con class="gg-home"></con>
+                    </i>
+                </span>
+            </section>
+        </div>
+    </section>
+</header>
+<nav class="nav-room">
+    <section>
+        <div class="room-links">
+            <section>
+                <span class="links-lobby" href="/">
+                    <section>
+                        <i>
+                            <con></con>
+                        </i>
+                        <font>Open Lobby</font>
+                    </section>
+                </span>
+                <span class="links-upgrade">
+                    <section>
+                        <font>Upgrade</font>
+                    </section>
+                </span>
+            </section>
+        </div>
+        <div class="room-messages">
+            <header>
+                <span>
+                    <section>
+                        <font>Messages</font>
+                    </section>
+                </span>
+            </header>
+            <section></section>
+            <template></template>
+        </div>
+        <div class="room-users">
+            <header>
+                <span>
+                    <section>
+                        <font>People</font>
+                    </section>
+                </span>
+            </header>
+            <section></section>
+            <template></template>
+        </div>
+    </section>
+</nav>
+<article class="article-room">
+    <header class="room-header">
+        <div class="header-icon"></div>
+        <div class="header-info">
+            <section>
+                <span value="name"></span>
+            </section>
+        </div>
+        <div class="header-more"></div>
+    </header>
+    <section class="room-cams">
+        <div class="cams-users">
+            <section></section>
+            <template>
+                <span class="users-cam">
+                    <section>
+                        <video autoplay class="cam-video" muted onloadedmetadata="console.log('onloadedmetadata'); event.target.play()" playsinline data-src="https://www.onirikal.com/videos/mp4/ermessenda.mp4"></video>
+                        <font class="cam-username">username</font>
+                    </section>
+                </span>
+            </template>
+        </div>
+        <div class="cams-start">
+            <section>
+                <font class="start-cam">Cam Up</font>
+            </section>
+        </div>
+    </section>
+    <aside class="room-chat">
+        <div class="chat-box">
+            <section></section>
+            <template>
+                <span class="box-text">
+                    <section>
+                        <picture></picture>
+                        <font>
+                            <face>username</face>
+                            <face>sup tho</face>
+                        </font>
+                    </section>
+                </span>
+            </template>
+        </div>
+        <div class="chat-form" onsubmit="api.rooms.message(event)">
+            <form>
+                <input class="form-text" placeholder="Type a message" type="text">
+            </form>
+        </div>
+    </aside>
+</article>

@@ -1,0 +1,41 @@
+body {
+    background: black;
+    color: white;
+    margin: 0;
+}
+
+mouth {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 0;
+    height: calc(100% - 108px);
+}
+
+mouth words {    
+    background: #323232;
+    display: inline-flex;
+    white-space: pre-wrap;
+    margin: 20px;
+    padding: 20px;
+}
+
+speak {
+    width: 100%;
+    height: 108px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+voice {
+    background: #323232;
+    display: inline-flex;
+    white-space: pre-wrap;
+    /* padding: 20px; */
+    width: calc(100% / 3);
+    height: calc(100% / 3);
+}
+
+voice:nth-child(odd) {
+    background: #777;
+}

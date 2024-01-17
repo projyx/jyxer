@@ -1,0 +1,26 @@
+{
+    "name": "Chat",
+    "routes": [
+        {
+            "file": "home.html",
+            "url": "/"
+        },
+        {
+            "file": "chat.html",
+            "url": "/chat"
+        },
+        {
+            "file": "room.html",
+            "url": "/chat/*"
+        },
+        {
+            "file": "setup.html",
+            "url": "/setup"
+        },
+        {
+            "file": "start.html",
+            "url": "/start"
+        }
+    ],
+    "theme_color": "#a14a4a"
+}

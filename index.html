@@ -1,36 +1,53 @@
 <html>
     <head>
-        <title>Jyxer</title>
+        <title>[ Jyxer ] Projyx</title>
         <meta name="theme-color" content="#787878"/>
         <meta name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0'>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-        <link href="/index.css" rel="stylesheet">
-        <link href="/assets/css/home.css" rel="stylesheet">
-        <link href="/assets/css/theme.css" rel="stylesheet">
-        <script src="/index.js"></script>
-        <script src="/assets/js/api.js"></script>
-        <script src="/assets/js/events.js"></script>
-        <script src="/assets/js/export.js"></script>
-        <script src="/assets/js/router.js"></script>
-        <script src="/assets/js/routes.js"></script>
+        <link href="index.css" rel="stylesheet">
+        <link href="raw/asset/css/home.css" rel="stylesheet">
+        <link href="raw/asset/css/theme.css" rel="stylesheet">
+        <script src="index.js"></script>
+        <script src="raw/asset/js/api.js"></script>
+        <script src="raw/asset/js/events.js"></script>
+        <script src="raw/asset/js/export.js"></script>
+        <script src="raw/asset/js/router.js"></script>
+        <script src="raw/asset/js/routes.js"></script>        
+        <script>
+            var domains = {
+                "jyxer.com": "/",
+                "projyx.tld": "/yjxer",
+                "projyx.github.io": "/"
+            };
+            var base = document.createElement('base');
+            var template = document.head.querySelector('template');
+            var host = window.location.host;
+            var origin = window.location.origin;
+            base.href = origin + domains[host] + "/";
+            document.head.querySelector('script').insertAdjacentHTML("afterend", base.outerHTML);
+            base = document.head.querySelector('script').nextElementSibling;
+            //console.log(base, template);
+            //base.insertAdjacentHTML("afterend", template.content.firstElementChild.innerHTML);
+        </script>
     </head>
-    <body>
-        <time>
-            <clock></clock>
-        </time>
-        <search>
-            <form></form>
-        </search>
-        <main>
-            <section>
-                <section class="component component-home" route="/"></section>
-            </section>
-        </main>
-        <user>
-            <picture></picture>
-        </user>
-        <brand>
-            <picture></picture>
-        </brand>
-    </body>
+</head>
+<body>
+    <time>
+        <clock></clock>
+    </time>
+    <search>
+        <form></form>
+    </search>
+    <main>
+        <section>
+            <section class="component component-home" route="/"></section>
+        </section>
+    </main>
+    <user>
+        <picture></picture>
+    </user>
+    <brand>
+        <picture></picture>
+    </brand>
+</body>
 </html>

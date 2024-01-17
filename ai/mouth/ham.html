@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>Shakespearean Monologue Bot: Chatbots in the Browser with TensorFlow.js</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+    </head>
+    <body>
+        <h1 id="status">Shakespearean Monologue Bot</h1>
+        <div id="bot-text"></div>
+        <script>
+            function setText(text) {
+                document.getElementById("status").innerText = text;
+            }
+
+            function vocab() {
+                return window.model.tokenizer.vocabulary;
+            }
+
+            function randWord() {
+                //var vocab = window.model.tokenizer.vocabulary;
+                var str = vocab()[Math.floor(Math.random() * 8000)][0].split('▁');
+                var word = str[str.length - 1];
+                //console.log('randWord', word);
+                return word;
+            }
+
+            // Calculate the dot product of two vector arrays.
+            const dotProduct = (xs,ys)=>{
+                const sum = xs=>xs ? xs.reduce((a,b)=>a + b, 0) : undefined;
+
+                return xs.length === ys.length ? sum(zipWith((a,b)=>a * b, xs, ys)) : undefined;
+            }
+
+            // zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+            const zipWith = (f,xs,ys)=>{
+                const ny = ys.length;
+                return (xs.length <= ny ? xs : xs.slice(0, ny)).map((x,i)=>f(x, ys[i]));
+            }
+
+            async function predictNextWord(prompt) {
+                const numSamples = 200;
+                let randomOffset = Math.floor(Math.random() * 8000);
+                var prompt = document.getElementById('bot-text').lastElementChild.textContent;
+                const input = {
+                    queries: [prompt],
+                    //responses: messages.slice(randomOffset, numSamples),
+                    responses: window.model.tokenizer.vocabulary.slice(randomOffset, numSamples)
+                };
+                const embeddings = await window.model.embed(input);
+                const embedPrompt = embeddings[0];
+
+                // Generate predictions for the next word
+                const predictions = await window.model.model.predict(embedPrompt);
+                const predictionValues = predictions.arraySync()[0];
+
+                // Find the index of the predicted word
+                const nextWordIndex = predictionValues.indexOf(Math.max(...predictionValues));
+
+                // Get the vocabulary word corresponding to the predicted index
+                const vocabulary = window.model.tokenizer.vocabulary;
+                const nextWord = vocabulary[nextWordIndex];
+
+                return nextWord;
+            }
+
+            (async()=>{
+                // Load the universal sentence encoder
+                setText("Loading USE...");
+                window.encoder = await use.load();
+                setText("Loaded!");
+                window.model = await use.loadQnA();
+
+                let shakespeare_lines = await fetch("/assets/txt/tinyshakespeare.txt").then(r=>r.text());
+                window.lines = [];
+                vocab().forEach((x,i)=>{
+                    var str = x[0].split('&#9601;');
+                    var word = str[str.length - 1];
+                    0 > 1 ? console.log({
+                        x,
+                        str,
+                        word
+                    }) : null;
+                    lines[i] = word;
+                }
+                );
+                // Split & remove empty lines
+
+                let messages = [];
+                let responses = [];
+                for (let i = 0; i < lines.length - 1; i++) {
+                    //var rw = randWord();
+                    messages.push(lines[i]);
+                    responses.push(lines[i + 1]);
+                }
+
+                let text = randWord();
+                document.getElementById("bot-text").innerHTML += '<span>' + text + "</span>";
+                // Add to the monologue every 3s
+                var ham = setInterval(async()=>{
+                    // Run the calculation things
+                    const numSamples = 200;
+                    let randomOffset = Math.floor(Math.random() * messages.length);
+                    var prompt = document.getElementById('bot-text').lastElementChild.textContent;
+                    const input = {
+                        queries: [prompt],
+                        //responses: messages.slice(randomOffset, numSamples),
+                        responses: window.model.tokenizer.vocabulary.slice(randomOffset, numSamples)
+                    };
+                    let embeddings = await model.embed(input);
+                    tf.tidy(()=>{
+                        const embed_query = embeddings["queryEmbedding"].arraySync();
+                        const embed_responses = embeddings["responseEmbedding"].arraySync();
+                        let scores = [];
+                        embed_responses.forEach(response=>{
+                            scores.push(dotProduct(embed_query[0], response));
+                        }
+                        );
+                        let id = scores.indexOf(Math.max(...scores));
+                        text = responses[randomOffset + id];
+                        document.getElementById("bot-text").innerHTML += ' <span>' + text + "</span>";
+                    }
+                    );
+                    embeddings.queryEmbedding.dispose();
+                    embeddings.responseEmbedding.dispose();
+
+                    // Predict the future
+                    if (0 > 1) {
+                        var nextWord = await predictNextWord(prompt);
+
+                        console.log({
+                            nextWord
+                        });
+                    }
+
+                    if (document.querySelector("#bot-text").textContent.length > 351) {
+                        clearTimeout(ham);
+                        console.log('STFU');
+                        setText("STFU");
+                    } else {
+                        console.log('HAM', document.querySelector("#bot-text").textContent.length);
+                        setText('HAM ' + document.querySelector("#bot-text").textContent.length);
+                    }
+                }
+                , 3000);
+            }
+            )();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link href="../index.css" rel="stylesheet">
+        <link href="../raw/asset/css/home.css" rel="stylesheet">
+        <script src="../index.js"></script>
+        <script src="../code/index.js"></script>
+        <script src="../raw/asset/js/qrcode.min.js"></script>
+    </head>
+    <body>
+        <main>
+            <page class="page-home" route="/">
+                <blocks>
+                    <header>
+                        <section>
+                            <card></card>
+                        </section>
+                    </header>
+                    <block class="block-keycode">
+                        <section>
+                            <card>
+                                <header>
+                                    <box>
+                                        <section>
+                                            <text>My KeyCode</text>
+                                        </section>
+                                    </box>
+                                </header>
+                                <section>
+                                    <box>
+                                        <section>
+                                            <text>By sharing your KeyCode, you agree to the <br><u>conditions of use</u> and <u>privacy notice</u></text>
+                                        </section>
+                                    </box>
+                                </section>
+                            </card>
+                            <card>
+                                <section>
+                                    <box>
+                                        <picture class="qrcode" id="qrcode"></picture>
+                                    </box>
+                                </section>
+                            </card>
+                            <card>
+                                <section>
+                                    <box>
+                                        <section>
+                                            <text>Scan to pay, request and more with family, friends and others. Collect, share and trade codes with other KeyCoders.</text>
+                                        </section>
+                                    </box>
+                                </section>
+                                <footer>
+                                    <box>
+                                        <section>
+                                            <text>OK, got it!</text>
+                                        </section>
+                                    </box>
+                                </footer>
+                            </card>
+                        </section>
+                    </block>
+                </blocks>
+            </page>
+        </main>
+    </body>
+</html>

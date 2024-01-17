@@ -1,0 +1,33 @@
+<script>
+    class AttentionLayer extends tf.layers.Layer {
+        constructor(config) {
+            super(config);
+            this.alpha = config.alpha;
+        }
+        build(inputShape) {
+            const shape = [];
+            // Because our weight (x) is scalar.
+            this.x = this.addWeight('x', shape, 'float32', tf.initializers.ones());
+        }
+        call(inputs) {
+            const input = inputs[0];
+            return tf.tidy(()=>{
+                const k = tf.pow(this.x.read(), this.alpha);
+                return tf.add(input, k);
+            }
+            );
+        }
+        getConfig() {
+            const config = super.getConfig();
+            Object.assign(config, {
+                alpha: this.alpha
+            });
+            return config;
+        }
+        static get className() {
+            return 'AttentionLayer';
+        }
+    }
+
+    tf.serialization.registerClass(AttentionLayer);
+</script>

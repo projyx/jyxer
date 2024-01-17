@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Chat | Jyxer</title>
+        <meta name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0'>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+        <link href="/index.css" rel="stylesheet">
+        <link href="/raw/asset/css/shell.css" rel="stylesheet">
+        <link href="/raw/asset/css/home.css" rel="stylesheet">
+        <link href="/raw/asset/css/chat.css" rel="stylesheet">
+        <link href="/raw/asset/css/room.css" rel="stylesheet">
+        <link href="/raw/asset/css/start.css" rel="stylesheet">
+        <link href="/raw/asset/css/theme.css" rel="stylesheet">
+        <link href="/raw/asset/css/gg.css" rel="stylesheet">
+        <script src="/index.js"></script>
+        <script src="/raw/asset/js/api.js"></script>
+        <script src="/raw/asset/js/events.js"></script>
+        <script src="/raw/asset/js/export.js"></script>
+        <script src="/raw/asset/js/router.js"></script>
+        <script src="/raw/asset/js/routes.js"></script>
+        <script src="/raw/asset/js/RTCMultiConnection.min.js"></script>
+        <script src="/raw/asset/js/WebRTCAdapter.js"></script>
+        <script src="/raw/asset/js/socket.io.4.7.2.min.js"></script>
+        <script src="/raw/asset/js/connection.js"></script>
+    </head>
+    <body theme="system">
+        <boot></boot>
+        <main>
+            <component class="component component-home" component="home" route="/"></component>
+            <component class="component component-chat" component="chat" route="/chat"></component>
+            <component class="component component-room" component="room" route="/chat/*"></component>
+            <component class="component component-setup" component="setup" route="/setup"></component>
+            <component class="component component-start" component="start" route="/start"></component>
+        </main>
+    </body>
+</html>

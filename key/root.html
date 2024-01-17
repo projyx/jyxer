@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Wallet | Jyxer</title>
+        <link href="/index.css" rel="stylesheet">
+        <script src="/raw/asset/js/firebase.app.js"></script>
+        <script src="/raw/asset/js/firebase.auth.js"></script>
+        <script src="/raw/asset/js/router.js"></script>
+    </head>
+    <body>
+        <aside auth="false">
+            <blocks>
+                <block>
+                    <column>
+                        <card>
+                            <header>
+                                <box>
+                                    <section>
+                                        <text>Wallet</text>
+                                    </section>
+                                </box>
+                            </header>
+                            <column>
+                                <box>
+                                    <section>
+                                        <text>Enter your e-mail address or username and we'll send a link to reset your password.</text>
+                                    </section>
+                                </box>
+                                <box></box>
+                            </column>
+                        </card>
+                    </column>
+                </block>
+            </blocks>
+        </aside>
+        <main auth="true">
+            <page route="/"></page>
+            <page route="/orders"></page>
+            <page route="/import"></page>
+        </main>
+    </body>
+</html>

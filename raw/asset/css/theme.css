@@ -1,0 +1,61 @@
+/*PALETTE*/
+@media {
+    .background-color-red {
+        background-color: #fe0000;
+    }
+
+    .background-color-orange {
+        background-color: #fe8f01;
+    }
+
+    .background-color-yellow {
+        background-color: #fef200;
+    }
+
+    .background-color-green {
+        background-color: #24b550;
+    }
+
+    .background-color-blue {
+        background-color: #1060ff;
+    }
+
+    .background-color-indigo {
+        background-color: #7542ff;
+    }
+
+    .background-color-violet {
+        background-color: #7a1fa0;
+    }
+}
+
+
+@media {
+    .color-red {
+        color: #fe0000;
+    }
+
+    .color-orange {
+        color: #fe8f01;
+    }
+
+    .color-yellow {
+        color: #fef200;
+    }
+
+    .color-green {
+        color: #24b550;
+    }
+
+    .color-blue {
+        color: #1060ff;
+    }
+
+    .color-indigo {
+        color: #7542ff;
+    }
+
+    .color-violet {
+        color: #7a1fa0;
+    }
+}

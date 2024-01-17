@@ -1,0 +1,382 @@
+@media {
+    .component-room {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+@media {
+    .component-room > header {
+        width: 50px;
+        height: 100%;
+        background: #606060;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body[theme="system"] .component-room > header {
+            background: #060606;
+        }
+    }
+}
+
+@media {
+    .component-room > nav {
+        background: #919191;
+        height: 100%;
+        width: 240px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body[theme="system"] .component-room > nav {
+            background: #191919;
+        }
+    }
+
+    .component-room > nav > section {
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px;
+    }
+
+    .component-room > nav > section .room-links > section {
+        color: #fff;
+        flex: 1;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .component-room > nav > section .room-links > section > span {
+        background: #7542ff;
+        border-radius: 40px;
+        font-weight: bolder;
+        justify-content: center;
+        line-height: 40px;
+    }
+
+    .component-room > nav > section .room-links > section > span:first-child {
+        background-color: #c53535;
+    }
+}
+
+@media {
+    .component-room > article {
+        align-items: stretch;
+        flex-direction: row;
+        flex-grow: 1;
+        flex-wrap: wrap;
+    }
+
+    .component-room > article .room-header {
+        border-bottom: 1px solid #cecece;
+        box-sizing: border-box;
+        height: 100px;
+        padding: 20px;
+        width: 100%;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body[theme="system"] .component-room > article .room-header {
+            border-bottom: 1px solid #353535;
+        }
+    }
+}
+
+@media {
+    .component-room > article .room-cams {
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 10px;
+        height: calc(100% - 140px);
+        padding: 20px;
+    }
+
+    .component-room > article .room-cams .cams-users {
+        flex-grow: 1;
+    }
+
+    .component-room > article .room-cams .cams-users > section {
+        align-items: center;
+        flex: 1;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .component-room > article .room-cams .cams-users > section > .users-cam {
+        background: black;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .component-room > article .room-cams .cams-users > section > .users-cam > section {
+        flex: 1;
+    }
+
+    .component-room > article .room-cams .cams-users > section > .users-cam > section .cam-video {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+
+    .component-room > article .room-cams .cams-users > section > .users-cam > section .cam-username {
+        font-weight: bolder;
+        margin: auto auto 10px;
+        position: relative;
+    }
+
+    /*CAMS 1*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:first-child:last-child) > .users-cam {
+            height: calc((100% - 0px) / 1);
+            width: calc((100% - 0px) / 1);
+        }
+    }
+
+    /*CAMS 2*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(2)) > .users-cam {
+            height: calc((100% - 0px) / 1);
+            width: calc((100% - 10px) / 2);
+        }
+    }
+
+    /*CAMS 3*/
+    @media legacy {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(3)) > .users-cam {
+            height: calc((100% - 10px) / 2);
+            width: calc((100% - 10px) / 2);
+        }
+    }
+
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(3)) > .users-cam {
+            height: calc((100% - 0px) / 1);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 4*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(4)) > .users-cam {
+            height: calc((100% - 10px) / 2);
+            width: calc((100% - 10px) / 2);
+        }
+    }
+
+    /*CAMS 5*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(5)) > .users-cam {
+            height: calc((100% - 10px) / 2);
+            width: calc((100% - 20px) / 3);
+        }
+
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(5)) > .users-cam:nth-child(3) ~ * {
+            width: calc((100% - 10px) / 2);
+        }
+    }
+
+    @media legacy {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(5)) > .users-cam {
+            height: calc((100% - 10px) / 2);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 6*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(6)) > .users-cam {
+            height: calc((100% - 10px) / 2);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 7*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(7)) > .users-cam {
+            height: calc((100% - 20px) / 3);
+            width: calc((100% - 10px) / 2);
+        }
+
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(7)) > .users-cam:nth-child(2) ~ *:not(:nth-last-child(3) ~ *) {
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    @media legacy {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(7)) > .users-cam {
+            height: calc((100% - 20px) / 3);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 8*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(8)) > .users-cam {
+            height: calc((100% - 20px) / 3);
+            width: calc((100% - 20px) / 3);
+        }
+
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(8)) > .users-cam:nth-child(3) ~ *:not(:nth-last-child(4) ~ *) {
+            width: calc((100% - 20px) / 2);
+        }
+    }
+
+    @media legacy {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(8)) > .users-cam {
+            height: calc((100% - 20px) / 3);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 9*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(9)) > .users-cam {
+            height: calc((100% - 20px) / 3);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 10*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(10)) > .users-cam {
+            height: calc((100% - 30px) / 4);
+            width: calc((100% - 20px) / 3);
+        }
+
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(10)) > .users-cam:nth-child(3) ~ *:not(:nth-last-child(4) ~ *) {
+            width: calc((100% - 10px) / 2);
+        }
+    }
+
+    @media legacy {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(10)) > .users-cam {
+            height: calc((100% - 30px) / 4);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 11*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(11)) > .users-cam {
+            height: calc((100% - 20px) / 3);
+            width: calc((100% - 30px) / 4);
+        }
+
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(11)) > .users-cam:nth-child(4) ~ *:not(:nth-last-child(5) ~ *) {
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    @media legacy {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(11)) > .users-cam {
+            height: calc((100% - 30px) / 4);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    /*CAMS 12*/
+    @media {
+        .component-room > article .room-cams .cams-users > section:has(.users-cam:last-child:nth-child(12)) > .users-cam {
+            height: calc((100% - 30px) / 4);
+            width: calc((100% - 20px) / 3);
+        }
+    }
+
+    .component-room > article .room-cams .cams-start {
+        background: #32cd32;
+        border-radius: 50px;
+        color: white;
+        height: 50px;
+    }
+
+    .component-room > article .room-cams .cams-start > section {
+        align-items: center;
+        flex-grow: 1;
+        font-weight: bolder;
+        justify-content: center;
+    }
+
+    .component-room > article .room-cams .cams-start > section > font {
+        /* flex-grow: 1; */
+    }
+
+    .component-room > article .room-cams .cams-start .start-cam {
+        background: # flex: 1;
+        text-align: center;
+    }
+}
+
+@media {
+    .component-room > article .room-chat {
+        border-left: 1px solid #cecece;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        width: 320px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body[theme="system"] .component-room > article .room-chat {
+            border-left: 1px solid #353535;
+        }
+    }
+
+    .component-room > article .room-chat .chat-box {
+        flex-direction: column;
+    }
+
+    .component-room > article .room-chat .box-text > section {
+        gap: 10px;
+    }
+
+    .component-room > article .room-chat .box-text > section picture {
+        background: black;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    }
+
+    .component-room > article .room-chat .box-text > section font {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .component-room > article .room-chat .box-text > section font face:first-child {
+        font-weight: bolder;
+        line-height: 20px;
+        white-space: nowrap;
+    }
+
+    .component-room > article .room-chat .box-text > section font face:last-child {
+        line-height: 14px;
+    }
+
+    .component-room > article .room-chat .chat-form {
+        border: 2px solid #ccc;
+        border-radius: 50px;
+        box-sizing: border-box;
+        height: 50px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body[theme="system"] .component-room > article .room-chat .chat-form {
+            border: 2px solid #777;
+        }
+    }
+
+    .component-room > article .room-chat .chat-form > form {
+        flex: 1;
+    }
+
+    .component-room > article .room-chat .chat-form > form [type="text"] {
+        font-size: 18px;
+        height: 100%;
+        padding: 0 20px 0 0;
+        text-indent: 20px;
+        width: 100%;
+    }
+}

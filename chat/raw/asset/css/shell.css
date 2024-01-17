@@ -1,0 +1,70 @@
+/*MAIN HEADER*/
+@media {
+    .body-header {
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        position: fixed;
+        backdrop-filter: blur(10px);
+        background-color: rgba(0,0,0,0.5);
+    }
+    
+    .body-header section {
+        flex-grow: 1;
+    }
+
+    .body-header > section {
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .body-header > section > div {
+        justify-content: space-between;
+    }
+
+    .body-header .logo {
+        background-image: url('/assets/png/logo.png');
+        background-size: contain;
+        filter: invert(1);
+        height: 30px;
+        width: 30px;
+    }
+
+    .body-header .name {
+        line-height: 30px;
+    }
+
+    .body-header > section > .buttons > section {
+        display: flex;
+        gap: 20px;
+    }
+
+    .body-header > section > .buttons > section > span {
+        line-height: 50px;
+        border-radius: 50px;
+    }
+
+    .body-header > section > .buttons > section > span:first-child {
+        background: #a14a4a;
+        background: #c53535;
+        padding: 0 20px
+    }
+
+    .body-header > section > .buttons > section > span:last-child {
+        border: 1px solid;
+        box-sizing: border-box;
+        color: #c53535;
+        padding: 0 20px;
+        height: 50px;
+    }
+
+    .body-header > section > div > section > span > section:has(.logo) {
+        font-size: 24px;
+        font-weight: bolder;
+        gap: 5px;
+    }
+
+    .body-header > section > div > section > span {
+        align-items: center;
+    }
+}

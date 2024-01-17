@@ -1,0 +1,28 @@
+/*SYSTEM*/
+@media {
+    @media (prefers-color-scheme: dark) {
+        body[theme="system"] {
+            background: #292a2d;
+            color: #fff;
+        }
+        
+        body[theme="system"] input {
+            color: #fff;
+        }
+    }
+}
+
+/*PALETTE*/
+@media {
+    .color-indigo {
+        color: #1f3667;
+    }
+    
+    .color-orange {
+        color: #dd7513;
+    }
+    
+    .color-red {
+        color: #c53535;
+    }
+}

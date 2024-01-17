@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>MouthThink</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.10.0/dist/tf.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+        <script>
+            window.onload = async function() {
+                window.spark = {};
+                window.spark.use = await use.load();
+                window.spark.tokenizer = await use.loadTokenizer('/assets/json/vocab.json');
+                window.spark.thought = 'Hello, how are you?';
+                window.spark.soul = await tf.loadLayersModel('/soul/iris/index.json')
+
+                // Encode real data.
+                const trainData = ['Hello', 'How are you?', 'What is your purpose?', 'Can you generate text?', 'Tell me a joke'];
+                const trainLabels = ['I am an AI language model.', "I'm doing well, thank you.", 'My purpose is to assist and provide information.', 'Yes, I can generate text based on a given prompt.', "Why don't scientists trust atoms? Because they make up everything!"];
+
+                const inputs = [400,500,390,293];
+                const outputs = [303, 442];
+
+                const model = tf.sequential();
+                model.add(tf.layers.dense({
+                    units: 100,
+                    inputShape: [4]
+                }));
+                model.add(tf.layers.activation({
+                    activation: 'softmax'
+                }));
+                model.add(tf.layers.dense({
+                    units: 2
+                }));
+                model.compile({
+                    loss: 'categoricalCrossentropy',
+                    optimizer: tf.train.sgd(0.001),
+                    metrics: ['accuracy']
+                });
+
+                //70% of the data used for trainning
+                const xs = tf.tensor2d(inputs, [inputs.length, inputs[0].length]);
+                const ys = tf.tensor2d(outputs, [outputs.length, outputs[0].length]);
+
+                //20% of the data used for validation
+                const xsVal = tf.tensor2d(inputsVal, [inputsVal.length, inputsVal[0].length]);
+                const ysVal = tf.tensor2d(outputsVal, [outputsVal.length, outputsVal[0].length]);
+
+                model.fit(xs, ys, {
+                    epochs: 100,
+                    batchSize: 64,
+                    validationData: [xsVal, ysVal]
+                }).then(async()=>{
+                    const saveResult = await model.save('file://modelo2');
+                }
+                );
+
+                function onBatchEnd(batch, logs) {
+                    console.log('Accuracy', logs.acc);
+                }
+
+                // Train for 5 epochs with batch size of 32.
+                // Define the model architecture
+
+                //Create Model
+                window.spark.model = tf.sequential({
+                    layers: [tf.layers.dense({
+                        inputShape: [inputSize],
+                        units: 32,
+                        activation: 'relu'
+                    }), tf.layers.dense({
+                        units: outputSize,
+                        activation: 'softmax'
+                    }), ]
+                });
+
+                // Compile the model
+                spark.model.compile({
+                    loss: 'categoricalCrossentropy',
+                    optimizer: 'adam',
+                    metrics: ['accuracy']
+                });
+
+                spark.model.fit(data, labels, {
+                    epochs: 50,
+                    batchSize: 32,
+                    callbacks: {
+                        onBatchEnd
+                    }
+                }).then(info=>{
+                    console.log('Final accuracy', info.history.acc);
+                }
+                );
+            }
+        </script>
+        <link href="index.css" rel="stylesheet">
+    </head>
+    <body></body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Words</title>
+        <link href="/mouth/words/index.css" rel="stylesheet">
+        <script src="/assets/js/tf.min.js"></script>
+        <script src="/mouth/words/index.js"></script>
+        <script src="/mouth/words/js/agi.js"></script>
+    </head>
+    <body class="body load" id="body" onload="app.init()">
+        <div id="chat-container" style="display:none;">
+            <div id="chat-log"></div>
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-btn">Send</button>
+        </div>
+        <nav></nav>
+        <main>
+            <section id="conversation"></section>
+        </main>
+        <footer>
+            <form id="form-message" onsubmit="handle.submit.question(event)">
+                <div class="type">
+                    <textarea id="question" onkeydown="handle.onkeydown.question(event)" onkeyup="handle.onkeyup.question(event)" placeholder="Send a message" rows="1" type="text"></textarea>
+                </div>
+                <div class="send" submit="input" id="submit">
+                    <i></i>
+                    <input type="submit" value="">
+                </div>
+            </form>
+        </footer>
+    </body>
+</html>

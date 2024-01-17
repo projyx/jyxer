@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>Language Model Training</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+    </head>
+    <body>
+        <h1>Language Model Training</h1>
+        <button onclick="trainModel()">Train Model</button>
+        <div id="status">Status: Idle</div>
+        <div id="output"></div>
+        <script>
+            async function trainModel() {
+                const data = ['Hello, how are you?', 'What is your name?', 'How was your day?', 'I like cats.', 'Do you enjoy coding?'];
+
+                const model = tf.sequential();
+                model.add(tf.layers.dense({
+                    units: 100,
+                    inputShape: [4]
+                }));
+                model.add(new AttentionLayer({
+                    activation: 'softmax'
+                }));
+                model.add(tf.layers.dense({
+                    units: 2
+                }));
+                model.compile({
+                    loss: 'categoricalCrossentropy',
+                    optimizer: tf.train.sgd(0.001),
+                    metrics: ['accuracy']
+                });
+
+                //70% of the data used for trainning
+                const xs = tf.tensor2d(inputs, [inputs.length, inputs[0].length]);
+                const ys = tf.tensor2d(outputs, [outputs.length, outputs[0].length]);
+
+                //20% of the data used for validation
+                const xsVal = tf.tensor2d(inputsVal, [inputsVal.length, inputsVal[0].length]);
+                const ysVal = tf.tensor2d(outputsVal, [outputsVal.length, outputsVal[0].length]);
+
+                await model.fit(xs, ys, {
+                    epochs: 100,
+                    batchSize: 64,
+                    validationData: [xsVal, ysVal]
+                }).then(async()=>{
+                    const saveResult = await model.save('file://modelo2');
+                }
+                );
+
+                const generatedText = generateText(model, 'Hello', 10);
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerText = generatedText;
+            }
+
+            function generateText(model, seed, length) {
+                const seedTensor = tf.tensor2d([seed.split(' ').map(word=>word.charCodeAt(0))]);
+                let generatedText = seed;
+
+                for (let i = 0; i < length; i++) {
+                    const predictions = model.predict(seedTensor);
+                    const nextWordIndex = tf.argMax(predictions.flatten()).dataSync()[0];
+                    const nextWord = String.fromCharCode(nextWordIndex);
+
+                    generatedText += ' ' + nextWord;
+                    seedTensor.dispose();
+                    seedTensor.assign(tf.tensor2d([generatedText.split(' ').map(word=>word.charCodeAt(0))]));
+                }
+
+                return generatedText;
+            }
+
+            class AttentionLayer extends tf.layers.Layer {
+                constructor(config) {
+                    super(config);
+                    this.alpha = config.alpha;
+                }
+
+                build(inputShape) {
+                    const shape = [];
+                    // Because our weight (x) is scalar.
+                    this.x = this.addWeight('x', shape, 'float32', tf.initializers.ones());
+                }
+
+                call(input) {
+                    return tf.tidy(()=>{
+                        const k = tf.pow(this.x.read(), this.alpha);
+                        return tf.add(input[0], k);
+                    }
+                    );
+                }
+
+                getConfig() {
+                    const config = super.getConfig();
+                    Object.assign(config, {
+                        alpha: this.alpha,
+                    });
+                    return config;
+                }
+
+                static get className() {
+                    return 'AttentionLayer';
+                }
+            }
+
+            tf.serialization.registerClass(AttentionLayer);
+
+            (async function main() {
+                const model = tf.sequential();
+                model.add(tf.layers.dense({
+                    units: 1,
+                    inputShape: [4]
+                }));
+                model.add(new AttentionLayer({
+                    alpha: 1.5
+                }));
+                model.compile({
+                    loss: 'meanSquaredError',
+                    optimizer: 'sgd'
+                });
+                model.summary();
+
+                // Train the model using some random data.
+                const xs = tf.randomNormal([2, 4]);
+                const ys = tf.randomNormal([2, 1]);
+
+                await model.fit(xs, ys, {
+                    epochs: 5,
+                    callbacks: {
+                        onEpochEnd: async(epoch,logs)=>{
+                            console.log(`Epoch ${epoch}: loss = ${logs.loss}`);
+                        }
+                        ,
+                    },
+                });
+
+                // Save the model and load it back.
+                await model.save('indexeddb://linguistic-predictive-transformer');
+                console.log('Model saved.');
+
+                const model2 = await tf.loadLayersModel('indexeddb://linguistic-predictive-transformer');
+                console.log('Model2 loaded.');
+
+                console.log('The two predict() outputs should be identical:');
+                model.predict(xs).print();
+                model2.predict(xs).print();
+            }
+            )();
+        </script>
+    </body>
+</html>

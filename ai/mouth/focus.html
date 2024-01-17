@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Language Model Training</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+    </head>
+    <body>
+        <h1>Language Model Training</h1>
+        <button onclick="trainModel()">Train Model</button>
+        <div id="status">Status: Idle</div>
+        <div id="output"></div>
+        <script>
+            class AttentionLayer extends tf.layers.Layer {
+                constructor(config) {
+                    super(config);
+                    this.alpha = config.alpha;
+                }
+                build(inputShape) {
+                    const shape = [];
+                    // Because our weight (x) is scalar.
+                    this.x = this.addWeight('x', shape, 'float32', tf.initializers.ones());
+                }
+                call(inputs) {
+                    const input = inputs[0];
+                    return tf.tidy(()=>{
+                        const k = tf.pow(this.x.read(), this.alpha);
+                        return tf.add(input, k);
+                    }
+                    );
+                }
+                getConfig() {
+                    const config = super.getConfig();
+                    Object.assign(config, {
+                        alpha: this.alpha
+                    });
+                    return config;
+                }
+                static get className() {
+                    return 'AttentionLayer';
+                }
+            }
+
+            tf.serialization.registerClass(AttentionLayer);
+
+            (async function main() {
+                const model = tf.sequential();
+                model.add(tf.layers.dense({
+                    units: 1,
+                    inputShape: [4]
+                }));
+                // Here comes an instance of the custom layer.
+                model.add(new AttentionLayer({
+                    alpha: 1.5
+                }));
+                model.compile({
+                    loss: 'meanSquaredError',
+                    optimizer: 'sgd'
+                });
+                model.summary();
+
+                // Train the model using some random data.
+                const xs = tf.randomNormal([2, 4]);
+                const ys = tf.randomNormal([2, 1]);
+
+                await model.fit(xs, ys, {
+                    epochs: 5,
+                    callbacks: {
+                        onEpochEnd: async(epoch,logs)=>{
+                            console.log(`Epoch ${epoch}: loss = ${logs.loss}`);
+                        }
+                    }
+                });
+
+                // Save the model and load it back.
+                await model.save('indexeddb://linguistic-predictive-transformer');
+                console.log('Model saved.');
+
+                const model2 = await tf.loadLayersModel('indexeddb://linguistic-predictive-transformer');
+                console.log('Model2 loaded.');
+
+                console.log('The two predict() outputs should be identical:');
+                model.predict(xs).print();
+                model2.predict(xs).print();
+            }
+            )();
+        </script>
+    </body>
+</html>

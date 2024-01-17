@@ -1,0 +1,22 @@
+body {
+    background: black;
+    color: white;
+    margin: 0;
+}
+
+heart {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+beat {
+    background: #323232;
+    display: block;
+    white-space: pre-wrap;
+    padding: 20px;
+}
+
+beat:nth-child(odd) {
+    /*background: #757575;*/
+}

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Prizmus</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+        <script src="index.js"></script>
+        <link href="index.css" rel="stylesheet">
+    </head>
+    <body class="body load" id="body" onload="app.init()">
+        <nav></nav>
+        <main>
+            <section></section>
+        </main>
+        <footer>
+            <form id="form-message" onsubmit="handle.submit.question(event)">
+                <div class="type">
+                    <textarea id="question" onkeydown="handle.onkeydown.question(event)" onkeyup="handle.onkeyup.question(event)" placeholder="Send a message" rows="1" type="text"></textarea>
+                </div>
+                <div class="send" submit="input">
+                    <i></i>
+                    <input type="submit" value="">
+                </div>
+            </form>
+        </footer>
+    </body>
+</html>

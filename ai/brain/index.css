@@ -1,0 +1,22 @@
+body {
+    background: black;
+    color: white;
+    margin: 0;
+}
+
+brain {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+storm {
+    background: #323232;
+    display: block;
+    white-space: pre-wrap;
+    padding: 20px;
+}
+
+storm:nth-child(odd) {
+    background: #757575;
+}

@@ -1,0 +1,32 @@
+[
+    {
+        "name": "books"
+    },
+    {
+        "name": "fashion"
+    },
+    {
+        "name": "finance"
+    },
+    {
+        "name": "gaming"
+    },
+    {
+        "name": "movies"
+    },
+    {
+        "name": "music"
+    },
+    {
+        "name": "politics"
+    },
+    {
+        "name": "shopping"
+    },
+    {
+        "name": "sports"
+    },
+    {
+        "name": "technology"
+    }
+]

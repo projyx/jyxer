@@ -1,11 +1,40 @@
 <html>
     <head>
         <title>Wallet | Jyxer</title>
+        <meta name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0'>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+        <meta name='apple-mobile-web-app-capable' content='yes'>
+        <meta name='apple-mobile-web-app-status-bar-style'>
+        <meta name="apple-mobile-web-app-title">
+        <meta name="application-name">
+        <meta name="application-shortname">
+        <meta name="msapplication-TileColor">
+        <meta name='theme-color'>
         <link href="/index.css" rel="stylesheet">
         <script src="/index.js"></script>
-        <script src="/raw/asset/js/firebase.app.js"></script>
-        <script src="/raw/asset/js/firebase.auth.js"></script>
-        <script src="/raw/asset/js/router.js"></script>
+        <script src="https://endk.it/raw/asset/js/firebase.app.js"></script>
+        <script src="https://endk.it/raw/asset/js/firebase.auth.js"></script>
+        <script src="https://endk.it/raw/asset/js/ochopussy.js"></script>
+        <script src="https://endk.it/raw/asset/js/router.js"></script>
+        <script src="index.js"></script>
+        <script src="raw/asset/js/routes.js"></script>
+        <script>
+            var domains = {
+                "jyxer.com": "/key",
+                "jyxer.tld": "/key",
+                "jyxer.pages.dev": "/notes",
+                "projyx.github.io": "/jyxer/key"
+            };
+            var base = document.createElement('base');
+            var template = document.head.querySelector('template');
+            var host = window.location.host;
+            var origin = window.location.origin;
+            base.href = origin + domains[host] + "/";
+            document.head.querySelector('script').insertAdjacentHTML("afterend", base.outerHTML);
+            base = document.head.querySelector('script').nextElementSibling;
+            //console.log(base, template);
+            //base.insertAdjacentHTML("afterend", template.content.firstElementChild.innerHTML);
+        </script>
     </head>
     <body>
         <aside auth="false">

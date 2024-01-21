@@ -11,6 +11,7 @@ window.onload = function() {
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
     });
+    rout.er(window.location.pathname);
 }
 
 function iiicoin() {

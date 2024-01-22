@@ -4,6 +4,7 @@
 
 .page-home .block-keycode {
     margin: auto;
+    max-width: 100%;
     text-align: center;
     width: 640px;
 }

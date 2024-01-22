@@ -1,28 +1,3 @@
-/*RESET*/
-body[auth]:not([auth="false"]) [auth="true"] {
-    display: none;
-}
-
-body[auth]:not([auth="true"]) [auth="false"] {
-    display: none;
-}
-
-body:not([auth]) [auth="true"] {
-    display: none;
-}
-
-block, card, box {
-    display: flex;    
-}
-
-column, flex, row {
-    display: flex;
-}
-
-page:not(.active) {
-    display: none;
-}
-
 /*STYLE*/
 body {
     font-family: Arial;

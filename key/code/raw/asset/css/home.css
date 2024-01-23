@@ -2,11 +2,15 @@
     width: 100%;
 }
 
+.page-home > blocks .block-keycode {
+    margin: 50px auto 10px;
+}
+
 .page-home .block-keycode {
     margin: auto;
     max-width: 100%;
     text-align: center;
-    width: 640px;
+    max-width: 640px;
 }
 
 .page-home .block-keycode .qrcode {
@@ -31,3 +35,5 @@
     top: 0;
     width: 100%;
 }
+
+body > header .box-avatar

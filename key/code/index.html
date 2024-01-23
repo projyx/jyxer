@@ -11,6 +11,7 @@
         <meta name="msapplication-TileColor">
         <meta name='theme-color'>
         <link href="index.css" rel="stylesheet">
+        <link href="https://endk.it/raw/asset/css/framework.css" rel="stylesheet">
         <link href="https://endk.it/raw/asset/css/ui.css" rel="stylesheet">
         <script src="index.js"></script>
         <script src="https://endk.it/raw/asset/js/firebase.app.js"></script>
@@ -41,13 +42,62 @@
         <script src="raw/asset/js/qrcode.min.js"></script>
     </head>
     <body>
+        <header class="body-header">
+            <row>
+                <card class="card-user">
+                    <row>
+                        <box class="box-avatar" onclick="github.oauth.login()">
+                            <flex>
+                                <picture></picture>
+                                <picture>
+                                    <img src="raw/asset/svg/github.svg">
+                                </picture>
+                            </flex>
+                        </box>
+                    </row>
+                </card>
+                <card class="card-system">
+                    <row>
+                        <box>
+                            <flex>
+                                <i>
+                                    <con class="gg-sun"></con>
+                                </i>
+                            </flex>
+                        </box>
+                    </row>
+                </card>
+            </row>
+        </header>
         <main>
             <page class="page-home active" route="/">
                 <blocks>
-                    <header>
-                        <section>
-                            <card></card>
-                        </section>
+                    <header class="body-header">
+                        <row>
+                            <card class="card-user">
+                                <row>
+                                    <box class="box-avatar" onclick="github.oauth.login()">
+                                        <flex>
+                                            <picture></picture>
+                                            <picture>
+                                                <img src="raw/asset/svg/github.svg">
+                                            </picture>
+                                        </flex>
+                                    </box>
+                                </row>
+                            </card>
+                            <card class="card-system">
+                                <row>
+                                    <box>
+                                        <flex>
+                                            <i>
+                                                <con class="gg-sun"></con>
+                                            </i>
+                                        </flex>
+                                    </box>
+                                </row>
+                            </card>
+                        </row>
                     </header>
                     <block class="block-keycode">
                         <section>

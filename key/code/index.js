@@ -10,9 +10,57 @@ window.onload = function() {
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
-    });
+    });    
+    document.body.onclick = window.events.onclick.document;
     rout.er(window.location.pathname);
 }
+
+firebase.initializeApp({
+    apiKey: "AIzaSyA2K41RYhtZm4nx2F1liIJ8ly4ejy6gqc8",
+    authDomain: "pro-jyx.firebaseapp.com",
+    projectId: "pro-jyx",
+    appId: "1:492439614306:web:58cffeca539613b875b23b"
+});
+firebase.auth().onAuthStateChanged(async(user)=>{
+    var pathname = window.location.href.split(document.head.querySelector("base").href)[1];
+    console.log(41, {
+        pathname
+    });
+    if (user) {
+        window.user = user;
+        0 < 1 ? console.log(42, 'index.user', {
+            user
+        }) : null;
+        try {
+            var uid = user.uid;
+            var user = await github.user.self();
+            //console.log(user);
+            var avatar_url = user.avatar_url;
+
+            document.body.setAttribute('uid', uid)
+            localStorage.setItem('githubAccessToken', token);
+
+            localStorage.setItem("user", user.login);
+
+            rout.er(pathname);
+        } catch (e) {
+            console.log(56, 'onAuthStateChanged', {
+                e
+            });
+
+            rout.er(pathname);
+        }
+    } else {
+        window.user = null;
+        localStorage.removeItem('githubAccessToken');
+        Array.from(document.body.querySelectorAll(".avatar-image")).forEach(function(avatar) {
+            avatar.innerHTML = "";
+        });
+        rout.er(pathname);
+    }
+    //dom.body.dataset.load = "ed";
+}
+);
 
 function iiicoin() {
     var d = new Date();
@@ -59,16 +107,16 @@ function iiicoin() {
 }
 
 window.Crypto = crypt = cx = {
-  uid: {
-    create: x => {
-      if (window.crypto || window.msCrypto) {
-        var array = new Uint32Array(x);
-        window.crypto.getRandomValues(array);
-        array.length === 1 ? array = array[0] : null;
-        return array;
-      } else {
-        throw new Error("Your browser can't generate secure random numbers");
-      }
+    uid: {
+        create: x=>{
+            if (window.crypto || window.msCrypto) {
+                var array = new Uint32Array(x);
+                window.crypto.getRandomValues(array);
+                array.length === 1 ? array = array[0] : null;
+                return array;
+            } else {
+                throw new Error("Your browser can't generate secure random numbers");
+            }
+        }
     }
-  }
 };

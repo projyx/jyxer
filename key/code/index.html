@@ -12,13 +12,16 @@
         <meta name='theme-color'>
         <link href="index.css" rel="stylesheet">
         <link href="https://endk.it/raw/asset/css/framework.css" rel="stylesheet">
-        <link href="https://endk.it/raw/asset/css/ui.css" rel="stylesheet">
-        <script src="index.js"></script>
+        <link href="https://endk.it/raw/asset/css/ui.css" rel="stylesheet"/>
+        <link href="https://endk.it/raw/asset/css/cc.css" rel="stylesheet"/>
+        <link href="raw/asset/css/home.css" rel="stylesheet">
         <script src="https://endk.it/raw/asset/js/firebase.app.js"></script>
         <script src="https://endk.it/raw/asset/js/firebase.auth.js"></script>
+        <script src="https://endk.it/raw/asset/js/github.js"></script>
         <script src="https://endk.it/raw/asset/js/ochopussy.js"></script>
         <script src="https://endk.it/raw/asset/js/router.js"></script>
         <script src="index.js"></script>
+        <script src="raw/asset/js/events.js"></script>
         <script src="raw/asset/js/routes.js"></script>
         <script>
             var domains = {
@@ -38,7 +41,6 @@
             //console.log(base, template);
             //base.insertAdjacentHTML("afterend", template.content.firstElementChild.innerHTML);
         </script>
-        <link href="raw/asset/css/home.css" rel="stylesheet">
         <script src="raw/asset/js/qrcode.min.js"></script>
     </head>
     <body>
@@ -46,6 +48,39 @@
             <row>
                 <card class="card-user">
                     <row>
+                        <box>
+                            <row>
+                                <i>
+                                    <con class="gg-time"></con>
+                                </i>
+                                <text>KeyCode</text>
+                            </row>
+                        </box>
+                    </row>
+                </card>
+                <card class="card-system">
+                    <row>
+                        <box>
+                            <flex>
+                                <i>
+                                    <con class="gg-time"></con>
+                                </i>
+                            </flex>
+                        </box>
+                        <box>
+                            <flex>
+                                <i>
+                                    <con class="gg-database"></con>
+                                </i>
+                            </flex>
+                        </box>
+                        <box>
+                            <flex>
+                                <i>
+                                    <con class="gg-options"></con>
+                                </i>
+                            </flex>
+                        </box>
                         <box class="box-avatar" onclick="github.oauth.login()">
                             <flex>
                                 <picture></picture>
@@ -56,49 +91,11 @@
                         </box>
                     </row>
                 </card>
-                <card class="card-system">
-                    <row>
-                        <box>
-                            <flex>
-                                <i>
-                                    <con class="gg-sun"></con>
-                                </i>
-                            </flex>
-                        </box>
-                    </row>
-                </card>
             </row>
         </header>
         <main>
             <page class="page-home active" route="/">
                 <blocks>
-                    <header class="body-header">
-                        <row>
-                            <card class="card-user">
-                                <row>
-                                    <box class="box-avatar" onclick="github.oauth.login()">
-                                        <flex>
-                                            <picture></picture>
-                                            <picture>
-                                                <img src="raw/asset/svg/github.svg">
-                                            </picture>
-                                        </flex>
-                                    </box>
-                                </row>
-                            </card>
-                            <card class="card-system">
-                                <row>
-                                    <box>
-                                        <flex>
-                                            <i>
-                                                <con class="gg-sun"></con>
-                                            </i>
-                                        </flex>
-                                    </box>
-                                </row>
-                            </card>
-                        </row>
-                    </header>
                     <block class="block-keycode">
                         <section>
                             <card>

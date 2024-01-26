@@ -2,8 +2,16 @@
     width: 100%;
 }
 
+.page-home .card-user {
+    width: 100%;
+}
+
+.page-home .body-header .card-user .box-avatar picture:empty {
+    display: none;
+}
+
 .page-home > blocks .block-keycode {
-    margin: 50px auto 10px;
+    padding: 70px 0 10px;
 }
 
 .page-home .block-keycode {
@@ -35,5 +43,3 @@
     top: 0;
     width: 100%;
 }
-
-body > header .box-avatar

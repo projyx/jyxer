@@ -34,12 +34,15 @@ firebase.auth().onAuthStateChanged(async(user)=>{
         try {
             var uid = user.uid;
             var user = await github.user.self();
-            //console.log(user);
             var avatar_url = user.avatar_url;
+            console.log(37, user);
 
+            var img = document.createElement('img');
+            img.src = avatar_url;
+            var pic = document.getElementById("avatar").querySelector('picture:last-child');
+            pic.innerHTML = img.outerHTML;
+            pic.src = avatar_url;
             document.body.setAttribute('uid', uid)
-            localStorage.setItem('githubAccessToken', token);
-
             localStorage.setItem("user", user.login);
 
             rout.er(pathname);

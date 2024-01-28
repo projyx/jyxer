@@ -89,10 +89,10 @@ function iiicoin() {
     var uid = Crypto.uid.create(root);
     var u = 0;
     var arr = [];
-    //console.log(uid, root);
+    console.log(92, uid, root);
     do {
-        var num = uid[u];
-        //console.log(u, num);
+        var num = u > 0 ? uid[u] : 0;
+        console.log(95, u, num);
         var str = num.toString();
         var sum = num % 9 || 9;
         arr.push(sum)

@@ -1,3 +1,65 @@
+
+/*PALETTE*/
+@media {
+    .background-color-red {
+        background-color: #fe0000;
+    }
+
+    .background-color-orange {
+        background-color: #fe8f01;
+    }
+
+    .background-color-yellow {
+        background-color: #fef200;
+    }
+
+    .background-color-green {
+        background-color: #24b550;
+    }
+
+    .background-color-blue {
+        background-color: #1060ff;
+    }
+
+    .background-color-indigo {
+        background-color: #7542ff;
+    }
+
+    .background-color-violet {
+        background-color: #7a1fa0;
+    }
+}
+
+@media {
+    .color-red {
+        color: #fe0000;
+    }
+
+    .color-orange {
+        color: #fe8f01;
+    }
+
+    .color-yellow {
+        color: #fef200;
+    }
+
+    .color-green {
+        color: #24b550;
+    }
+
+    .color-blue {
+        color: #1060ff;
+    }
+
+    .color-indigo {
+        color: #7542ff;
+    }
+
+    .color-violet {
+        color: #7a1fa0;
+    }
+}
+
 #coin {
     position: relative;
     margin: 0 auto;
@@ -23,8 +85,8 @@
 }
 
 #coin {
-    transition: -webkit-transform 1s ease-in;
-    -webkit-transform-style: preserve-3d;
+    /* transition: -webkit-transform 1s ease-in; */
+    /* -webkit-transform-style: preserve-3d; */
 }
 
 #coin div {
@@ -90,6 +152,7 @@
         gap: 20px;
         max-height: 100%;
         width: 100%;
+        animation: 7s negative linear infinite;
     }
 
     .component-home .article-ring .ring-spectrum > section {
@@ -118,6 +181,7 @@
         right: 0;
         bottom: 0;
         margin: auto;
+        /* animation: 12s negative linear infinite; */
     }
 
     @media (prefers-color-scheme: dark) {
@@ -205,5 +269,26 @@
     .component-home .article-ring .ring-spectrum box.ring-white > section {
         border: 2px solid white;
         box-sizing: border-box;
+    }
+}
+
+@media {
+    @keyframes negative {
+        from {
+            transform: rotate(calc(360deg));
+        }
+
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+    @keyframes positive {
+        from {
+            transform: rotate(calc(-360deg));
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
     }
 }

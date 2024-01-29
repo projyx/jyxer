@@ -1,3 +1,27 @@
+window.eternity = {};
+window.eternity.core = {};
+window.eternity.core.state = [];
+window.eternity.loop = {};
+window.eternity.loop.input = function() {
+    return new Promise(function(resolve, reject) {
+        resolve([0]);
+    }
+    )
+}
+window.eternity.loop.update = function() {
+    return new Promise(function(resolve, reject) {
+        resolve([1]);
+    }
+    )
+}
+window.eternity.loop.render = function() {
+    return new Promise(function(resolve, reject) {
+        //resolve(Math.random() >= 0.5 ? [0, 1] : [1, 0]);
+        resolve([Crypto.uid.create(1)]);
+    }
+    )
+}
+
 window.onload = async(event)=>{
     window.manifest = await request("site.webmanifest");
     console.log(2, "window.onload", {

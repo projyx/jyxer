@@ -5,6 +5,7 @@
         animation: gradient 15s infinite ease;
         -webkit-animation: gradient 15s infinite ease;
         margin: 0;
+        overflow: hidden;
     }
 
     @media (prefers-color-scheme: dark) {

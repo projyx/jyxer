@@ -1,0 +1,14 @@
+<html>
+    <head></head>
+    <body>
+        <main>
+            <page>
+                <blocks>
+                    <block></block>
+                    <block></block>
+                    <block></block>
+                </blocks>
+            </page>
+        </main>
+    </body>
+</html>
